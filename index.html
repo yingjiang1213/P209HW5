@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Shopping List</title>
+ 
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="index.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+
+<body>
+
+  <!-- Start of  page ------------------------------------------------------------------>
+   <div data-role="page" id="home">
+  <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>Grocery Shopping List</h1>
+      <div data-role="navbar" data-theme='b'>
+  <ul>
+    <li><a href="#home">Home Page</a></li>
+    <li><a href="#Edit">Add Item</a></li>
+    <li><a href="#ListAll">List Items</a></li>
+  </ul>
+  </div><!-- /navbar -->
+    </div>
+
+    <!--   page content -->
+    <div data-role="content" data-theme='b'>
+      <div class="newFont">
+        <h2> Shopping Memo - To Buy List</h2>
+      </div>
+    </div>
+
+    <!--  page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Colin Jones & Ying Jiang</h1>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+<!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="Edit">
+    <!--  page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>Add a Item</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Edit">Add Item</a></li>
+          <li><a href="#ListAll">List Items</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+    </div>
+
+    <!-- page content -->
+  
+    <div data-role="content" data-theme='c'>
+      <h2>Enter a new item</h2>
+      Enter item name <br />
+      <input type="text" value="" id="title" />
+      Enter item quantity <br />
+      <input type="text" value="" id="quantity" />
+      
+        <div class="ui-field-contain">
+          <label for="select-categ">Select a category</label>
+          <select name="select-categ" id="select-categ">
+            <option value="Personalcare">Personal Care</option>
+            <option value="Beverages">Beverages</option>
+            <option value="Backery">Backery</option>
+            <option value="Condiments">Condiments</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Deli">Deli</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Grains">Grain</option>
+          </select>
+        </div>
+    
+    
+      <input type="button" value="Click To Add Item" id="buttonAdd" data-inline="true" />
+      <input type="button" value="Clear Data" id="buttonClear" data-inline="true" />
+    </div>
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Colin Jones & Ying Jiang</h1>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+<!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="ListAll">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>My Grocery Shopping List</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home">Home Page</a></li>
+          <li><a href="#Edit">Add Item</a></li>
+          <li><a href="#ListAll">List Item</a></li>
+        </ul>
+      </div><!-- /navbar -->
+
+    </div>
+    <!--   page content -->
+    <div data-role="content" data-theme='e'>
+      <p>Here are my grocery list : </p>
+      <div>
+        <ul id="ItemListul"></ul>
+      </div>
+    
+      <input type="button" value="Sort By Categories" id="buttonSortCateg" data-inline="true" />
+      <input type="button" value="Sort By Title" id="buttonSortTitle" data-inline="true" />
+    </div>
+
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyrigtht 2023 by Colin Jones & Ying Jiang</h1>
+    </div>
+  </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+</body>
