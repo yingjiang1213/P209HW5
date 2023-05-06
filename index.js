@@ -1,18 +1,16 @@
 //Start by creating data
 let itemArray=[];
+let TotalPrice=0;
 
 //Define a constructor to create grocery objects
-let GroceryObject = function (pName,pQuantity,pCategory){
+let GroceryObject = function (pName,pQuantity,pCategory,pPrice){
     this.ID = itemArray.length + 1;
     this.Name = pName;
     this.Quantity = pQuantity;
     this.Category = pCategory;
+    this.Price = pPrice;
+    this.TotalPrice = pPrice * pQuantity;
 }
-
-itemArray.push(new GroceryObject("Apple","2 lbs","Fruits"));
-itemArray.push(new GroceryObject("Shampoo", "1 ct" ,"PersonalCare"));
-itemArray.push(new GroceryObject("White Rice", "1 bag","Grain"));
-itemArray.push(new GroceryObject("Cheesecake", "1 ct" , "Backery"));
 
 let selectedCateg = "not selected";
 
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.getElementById("buttonAdd").addEventListener("click", function () {
         itemArray.push(new GroceryObject(document.getElementById("title").value, document.getElementById("quantity").value,
-            selectedCateg));
+            selectedCateg, document.getElementById("price").value));
         document.location.href = "index.html#ListAll";
         //Add the URL value
     });
@@ -31,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("buttonClear").addEventListener("click", function () {
         document.getElementById("title").value = "";
         document.getElementById("quantity").value = "";
+        document.getElementById("price").value = "";
     });
 
     $(document).bind("change", "#select-categ", function (event, ui) {
@@ -68,9 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.location.href = "index.html#ListAll";
     });
+    document.getElementById("buttonClearEverything").addEventListener("click", function(){
+        itemArray = [];
+        document.location.href = "index.html#ListAll";
+    });
 
 //
 // end of add button events ************************************************************************
+
+
 
 
 function createList() {
@@ -80,7 +85,7 @@ function createList() {
     itemArray.forEach(function (element,) {  
         var li = document.createElement('li');
         var button= document.createElement('button');
-        li.innerHTML =  element.ID + ":  " + element.Name + "  " + element.Quantity + " " + element.Category;
+        li.innerHTML =  element.ID + ":  " + element.Name + ", x" + element.Quantity + ", in " + element.Category + ", at $" + element.Price + " per item, for a total of $" + element.TotalPrice;
         button.innerHTML="delete";
         button.addEventListener("click", function(){
             li.remove();
@@ -90,6 +95,25 @@ function createList() {
         theList.appendChild(button);
         
     });
+
+
+    function getGrandTotal()
+    {
+        let grandTotal = 0;
+        let itemTotal;
+        if(itemArray.length > 0)
+        {
+            for(let i = 0; i < itemArray.length; i++)
+            {
+                itemTotal = itemArray[i]['TotalPrice'];
+                grandTotal = grandTotal + parseFloat(itemTotal);
+            }
+        }
+        return grandTotal;
+    }
+
+    let showPrice = document.getElementById("endPrice")
+    showPrice.innerHTML = "The grand total for this shopping list is $" + getGrandTotal();
 };
 
 function createList1() {
@@ -100,7 +124,7 @@ function createList1() {
     itemArray.forEach(function (element,) {  
         var li = document.createElement('li');
         var button= document.createElement('button');
-        li.innerHTML = element.Name + "  " + element.Quantity;
+        li.innerHTML = element.Name + "  " + element.Quantity + "  " + element.Price;
         button.innerHTML="delete";
         button.addEventListener("click", function(){
             li.remove();
