@@ -16,7 +16,6 @@ let selectedCateg = "not selected";
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
 //Add button events ************************************************************************
     
     document.getElementById("buttonAdd").addEventListener("click", function () {
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
               }
               return 0;
             });   
-            createList2();
+            createList();
             document.location.href = "index.html#ListAll";
         });
     
@@ -63,20 +62,24 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return 0;
           });
-        createList1();
+        createList();
 
         document.location.href = "index.html#ListAll";
     });
     document.getElementById("buttonClearEverything").addEventListener("click", function(){
-        itemArray = [];
-        document.location.href = "index.html#ListAll";
+        itemArray=[];
+        document.location.href = "index.html#Edit";
     });
+
+    // page before show code *************************************************************************
+    $(document).on("pagebeforeshow", "#ListAll", function (event) {   // have to use jQuery 
+        createList();
+    });
+ 
+// end of page before show code *************************************************************************
 
 //
 // end of add button events ************************************************************************
-
-
-
 
 function createList() {
     var theList = document.getElementById("ItemListul");
@@ -90,81 +93,29 @@ function createList() {
         button.addEventListener("click", function(){
             li.remove();
             button.remove();
+            document.getElementById("endPrice").innerHTML="";
         })
         theList.appendChild(li);
         theList.appendChild(button);
         
     });
 
-
-    function getGrandTotal()
-    {
+function getGrandTotal(){
         let grandTotal = 0;
         let itemTotal;
         if(itemArray.length > 0)
+    {
+        for(let i = 0; i < itemArray.length; i++)
         {
-            for(let i = 0; i < itemArray.length; i++)
-            {
-                itemTotal = itemArray[i]['TotalPrice'];
-                grandTotal = grandTotal + parseFloat(itemTotal);
-            }
+            itemTotal = itemArray[i]['TotalPrice'];
+            grandTotal = grandTotal + parseFloat(itemTotal);
         }
-        return grandTotal;
     }
+        return grandTotal;
+}
 
     let showPrice = document.getElementById("endPrice")
     showPrice.innerHTML = "The grand total for this shopping list is $" + getGrandTotal();
 };
 
-function createList1() {
-    
-    var theList = document.getElementById("ItemListul");
-    theList.innerHTML = "";
-
-    itemArray.forEach(function (element,) {  
-        var li = document.createElement('li');
-        var button= document.createElement('button');
-        li.innerHTML = element.Name + "  " + element.Quantity + "  " + element.Price;
-        button.innerHTML="delete";
-        button.addEventListener("click", function(){
-            li.remove();
-            button.remove();
-        })
-        theList.appendChild(li);
-        theList.appendChild(button);
-
-    });
-  
-};
-
-function createList2() {
-    var theList = document.getElementById("ItemListul");
-    theList.innerHTML = "";
-
-    itemArray.forEach(function (element,) {  
-        var li = document.createElement('li');
-        var button= document.createElement('button');
-        li.innerHTML =  element.Category + " " +element.Name + "  " + element.Quantity;
-        button.innerHTML="delete";
-        button.addEventListener("click", function(){
-            li.remove();
-            button.remove();
-        })
-        theList.appendChild(li);
-        theList.appendChild(button);
-       
-    });
-  
-};
-
-
-
-    // page before show code *************************************************************************
-    $(document).on("pagebeforeshow", "#ListAll", function (event) {   // have to use jQuery 
-        createList();
-    });
-
- 
-// end of page before show code *************************************************************************
-
-});  
+});      
