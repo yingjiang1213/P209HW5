@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>My Shopping List</title>
+  <title>Shopping List</title>
  
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -26,6 +26,7 @@
     <li><a href="#home" id="navB">Home Page</a></li>
     <li><a href="#Edit" id="navB">Add Item</a></li>
     <li><a href="#ListAll" id="navB">List Items</a></li>
+    <li><a href="#Cost" id="navB">Cost</a></li>
   </ul>
   </div><!-- /navbar -->
     </div>
@@ -55,16 +56,15 @@
           <li><a href="#home" id="navB">Home Page</a></li>
           <li><a href="#Edit" id="navB">Add Item</a></li>
           <li><a href="#ListAll" id="navB">List Items</a></li>
+          <li><a href="#Cost" id="navB">Cost</a></li>
         </ul>
       </div><!-- /navbar -->
-
     </div>
-
     <!-- page content -->
   
     <div data-role="content" data-theme='c'>
       <h2>Enter a new item</h2>
-      Enter item name <br />
+      Enter item title <br />
       <input type="text" value="" id="title" />
       Enter item quantity <br />
       <input type="text" value="" id="quantity" />
@@ -104,12 +104,13 @@
   <div data-role="page" id="ListAll">
     <!--   page header -->
     <div data-role="header" data-theme='a' id="navA">
-      <h1>My Grocery Shopping List</h1>
+      <h1>Grocery Shopping List</h1>
       <div data-role="navbar" data-theme='b'>
         <ul>
           <li><a href="#home" id="navB">Home Page</a></li>
           <li><a href="#Edit" id="navB">Add Item</a></li>
           <li><a href="#ListAll" id="navB">List Item</a></li>
+          <li><a href="#Cost" id="navB">Cost</a></li>
         </ul>
       </div><!-- /navbar -->
 
@@ -120,11 +121,10 @@
       <div>
         <ul id="ItemListul"></ul>
       </div>
-      <div id="endPrice"></div>
-    
+      
       <input type="button" value="Sort By Categories" id="buttonSortCateg" data-inline="true" />
       <input type="button" value="Sort By Title" id="buttonSortTitle" data-inline="true" />
-      <input type="button" value="Clear List" id="buttonClearEverything" data-inline="true" />
+      
     </div>
 
 
@@ -133,8 +133,75 @@
       <h1>Copyright 2023 by Colin Jones & Ying Jiang</h1>
     </div>
   </div>
-  </div>
+</div>
   <!-- End of  page ------------------------------------------------------------------>
 
+  <!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="details">
+  
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <h1>Details</h1>
+      <div data-role="navbar" data-theme='b'>
+        <ul>
+          <li><a href="#home" id="navB">Home Page</a></li>
+          <li><a href="#Edit" id="navB">Add Item</a></li>
+          <li><a href="#ListAll" id="navB">List Item</a></li>
+          <li><a href="#Cost" id="navB">Cost</a></li>
+        </ul>
+      </div><!-- /navbar -->
+    </div>
+  
+    <!--  content -->
+    <div id="detailPage" data-role="content" data-theme='c'>
 
+      <p id="itemID"></p>
+      <p id="itemCategory"></p>
+      <p id="itemTitle"></p>
+      <p id="itemQuantity"></p>
+      <p id="itemPrice"></p>
+      <input type="button" value="Delete" id="delete" />    
+    </div>
+
+    <!--    footer -->
+    <div data-role="footer" data-theme='b'>
+      <h1>Copyright 2023 by Colin Jones & Ying Jiang</h1>
+    </div>
+  
+  </div>
+   <!-- End of  page ------------------------------------------------------------------>
+  
+
+    <!-- Start of  page ------------------------------------------------------------------>
+    <div data-role="page" id="Cost">
+      <!--   page header -->
+        <div data-role="header" data-theme='a' id = "navA">
+          <h1>Estimated Cost</h1>
+          <div data-role="navbar" data-theme='b'>
+      <ul>
+        <li><a href="#home" id="navB">Home Page</a></li>
+        <li><a href="#Edit" id="navB">Add Item</a></li>
+        <li><a href="#ListAll" id="navB">List Items</a></li>
+        <li><a href="#Cost" id="navB">Cost</a></li>
+      </ul>
+        </div><!-- /navbar -->
+    </div>
+        <!--   page content -->
+        <div data-role="content" data-theme='b'>
+          <div>
+            <ul id="costPage"></ul>
+            <div id="endPrice"></div>
+          </div>
+          <input type="button" value="Clear List" id="buttonClearEverything" data-inline="true" />
+        </div>
+    
+        <!--  page footer -->
+        <div data-role="footer" data-theme='b'>
+          <h1>Copyright 2023 by Colin Jones & Ying Jiang</h1>
+        </div>
+      </div> 
+  
+    <!-- End of  page ------------------------------------------------------------------>
+  
 </body>
+</html>
