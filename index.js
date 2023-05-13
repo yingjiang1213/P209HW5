@@ -95,14 +95,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('itemQuantity').innerHTML="Quantity: " + itemArray[pointer].Quantity;
         document.getElementById('itemPrice').innerHTML="Price per unit: $" +itemArray[pointer].Price;
         
-        document.getElementById('delete').addEventListener('click', function(){
+        //document.getElementById('delete').addEventListener('click', function(){
             
-                localStorage.removeItem(itemArray);
+                //localStorage.removeItem(itemArray);
         
             //document.location.href = "index.html#Edit";
         })
     });
-});
+//});
  
 // end of page before show code *************************************************************************
 
